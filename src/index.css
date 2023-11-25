@@ -6,6 +6,7 @@
 
 body {
   font-family: "Rubik", sans-serif;
+  background-color: #ccc;
 }
 
 @layer base {
@@ -82,5 +83,11 @@ body {
     --color-brand-700: #4338ca;
     --color-brand-800: #3730a3;
     --color-brand-900: #312e81;
+  }
+}
+
+@layer components {
+  .quiz {
+    @apply flex w-[300px] cursor-pointer items-center gap-[10px] rounded-md bg-[#eee] p-[20px] shadow-md;
   }
 }
