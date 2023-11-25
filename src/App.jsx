@@ -17,12 +17,10 @@ function reducer(state, action) {
   switch (action.type) {
     case "start":
       return { ...state, status: "active", topicNumber: action.payload };
-
     case "newAnswer":
       const question = state.questions[state.topicNumber].questions.at(
         state.index,
       );
-      console.log(question);
       return {
         ...state,
         answer: action.payload,
@@ -30,6 +28,8 @@ function reducer(state, action) {
           action.payload === question.answer ? state.points + 1 : state.points,
       };
 
+    case "nextQuestion":
+      return { ...state, index: state.index + 1, answer: null };
     default:
       throw new Error("Unknown Action.");
   }
@@ -37,7 +37,9 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { questions, status, topicNumber, index, answer } = state;
+  const { questions, status, topicNumber, index, answer, points } = state;
+
+  const questionsNum = questions[topicNumber]?.questions?.length;
 
   return (
     <div>
@@ -49,6 +51,8 @@ function App() {
             question={questions[topicNumber]?.questions[index]}
             dispatch={dispatch}
             answer={answer}
+            index={index}
+            questionsNum={questionsNum}
           />
         ) : (
           <StartScreen questions={questions} dispatch={dispatch} />

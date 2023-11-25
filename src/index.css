@@ -91,3 +91,12 @@ body {
     @apply w-full cursor-pointer items-center rounded-md bg-[#eee] p-[10px] shadow-md sm:p-[20px] md:w-[300px];
   }
 }
+
+::-webkit-progress-bar {
+  background-color: #c7d2fe;
+  border-radius: 100px;
+}
+::-webkit-progress-value {
+  background-color: #312e81;
+  border-radius: 100px;
+}
