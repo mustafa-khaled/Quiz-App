@@ -31,7 +31,7 @@ function App() {
     <div>
       <Header />
 
-      <div className="flex h-[calc(100vh-70px)] items-center justify-center">
+      <div className="flex min-h-[calc(100vh-70px)] items-center justify-center">
         {status === "active" ? (
           <QuestionList question={questions[topicNumber]?.questions[index]} />
         ) : (
