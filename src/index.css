@@ -87,7 +87,7 @@ body {
 }
 
 @layer components {
-  .quiz {
-    @apply flex w-full cursor-pointer items-center gap-[10px] rounded-md bg-[#eee] p-[10px] shadow-md sm:w-[300px] sm:p-[20px];
+  .option {
+    @apply w-full cursor-pointer items-center rounded-md bg-[#eee] p-[10px] shadow-md sm:p-[20px] md:w-[300px];
   }
 }

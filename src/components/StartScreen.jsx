@@ -15,7 +15,7 @@ function StartScreen({ questions, dispatch }) {
             return (
               <div
                 key={q.title}
-                className="quiz"
+                className="option flex gap-[10px]"
                 onClick={() => dispatch({ type: "start", payload: i })}
               >
                 <img src={q.icon} alt={q.title} className="w-[30px]" />
