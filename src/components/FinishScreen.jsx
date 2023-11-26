@@ -1,4 +1,6 @@
-function FinishScreen({ points, questionsNum }) {
+import Button from "./Button";
+
+function FinishScreen({ points, questionsNum, dispatch }) {
   return (
     <div className="container mx-auto  px-[10px] md:w-[80%]">
       <div className="ga-[20px] flex min-h-[80vh] w-full flex-col items-center justify-around md:flex-row md:justify-between">
@@ -14,6 +16,9 @@ function FinishScreen({ points, questionsNum }) {
             <h2 className="text-5xl md:text-8xl">{points}</h2>
             <p>out of {questionsNum}</p>
           </div>
+          <Button onClick={() => dispatch({ type: "restart" })}>
+            Restart Quiz!
+          </Button>
         </div>
       </div>
     </div>

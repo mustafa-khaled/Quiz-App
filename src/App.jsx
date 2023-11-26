@@ -12,12 +12,17 @@ const initialState = {
   answer: null,
   index: 0,
   points: 0,
+  secondRemaining: 10 * 30,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "start":
-      return { ...state, status: "active", topicNumber: action.payload };
+      return {
+        ...state,
+        status: "active",
+        topicNumber: action.payload,
+      };
     case "newAnswer":
       const question = state.questions[state.topicNumber].questions.at(
         state.index,
@@ -34,6 +39,16 @@ function reducer(state, action) {
 
     case "finish":
       return { ...state, status: "finished" };
+
+    case "restart":
+      return { ...initialState };
+
+    case "tick":
+      return {
+        ...state,
+        secondRemaining: state.secondRemaining - 1,
+        status: state.secondRemaining === 0 ? "finished" : state.status,
+      };
     default:
       throw new Error("Unknown Action.");
   }
@@ -41,7 +56,15 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { questions, status, topicNumber, index, answer, points } = state;
+  const {
+    questions,
+    status,
+    topicNumber,
+    index,
+    answer,
+    points,
+    secondRemaining,
+  } = state;
 
   const questionsNum = questions[topicNumber]?.questions?.length;
 
@@ -61,11 +84,16 @@ function App() {
             answer={answer}
             index={index}
             questionsNum={questionsNum}
+            secondRemaining={secondRemaining}
           />
         )}
 
         {status === "finished" && (
-          <FinishScreen questionsNum={questionsNum} points={points} />
+          <FinishScreen
+            questionsNum={questionsNum}
+            points={points}
+            dispatch={dispatch}
+          />
         )}
       </div>
     </div>
