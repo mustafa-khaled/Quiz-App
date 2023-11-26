@@ -3,6 +3,7 @@ import { useReducer } from "react";
 import Header from "./components/Header";
 import StartScreen from "./components/StartScreen";
 import Question from "./components/Question";
+import FinishScreen from "./components/FinishScreen";
 
 const initialState = {
   status: "pending",
@@ -30,6 +31,9 @@ function reducer(state, action) {
 
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
+
+    case "finish":
+      return { ...state, status: "finished" };
     default:
       throw new Error("Unknown Action.");
   }
@@ -46,7 +50,11 @@ function App() {
       <Header />
 
       <div className="flex min-h-[calc(100vh-70px)] items-center justify-center">
-        {status === "active" ? (
+        {status === "pending" && (
+          <StartScreen questions={questions} dispatch={dispatch} />
+        )}
+
+        {status === "active" && (
           <Question
             question={questions[topicNumber]?.questions[index]}
             dispatch={dispatch}
@@ -54,8 +62,10 @@ function App() {
             index={index}
             questionsNum={questionsNum}
           />
-        ) : (
-          <StartScreen questions={questions} dispatch={dispatch} />
+        )}
+
+        {status === "finished" && (
+          <FinishScreen questionsNum={questionsNum} points={points} />
         )}
       </div>
     </div>

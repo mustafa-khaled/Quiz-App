@@ -26,14 +26,23 @@ function Question({ question, dispatch, answer, index, questionsNum }) {
             );
           })}
 
-          {answer && (
+          {answer && index < questionsNum - 1 ? (
             <button
               className="option bg-[#4338ca] text-white"
               onClick={() => dispatch({ type: "nextQuestion" })}
             >
               Next Question
             </button>
-          )}
+          ) : null}
+
+          {answer && index === questionsNum - 1 ? (
+            <button
+              className="option bg-[#4338ca] text-white"
+              onClick={() => dispatch({ type: "finish" })}
+            >
+              Finish
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
