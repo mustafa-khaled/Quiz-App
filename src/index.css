@@ -4,19 +4,13 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-body {
-  font-family: "Rubik", sans-serif;
-  background-color: #ccc;
-}
-
 @layer base {
   :root {
     &,
     &.light-mode {
       /* Grey */
       --color-grey-0: #fff;
-      --color-grey-50: #f9fafb;
-      --color-grey-100: #f3f4f6;
+      --color-grey-50: #f3f4f6;
       --color-grey-200: #e5e7eb;
       --color-grey-300: #d1d5db;
       --color-grey-400: #9ca3af;
@@ -25,30 +19,6 @@ body {
       --color-grey-700: #374151;
       --color-grey-800: #1f2937;
       --color-grey-900: #111827;
-
-      --color-blue-100: #e0f2fe;
-      --color-blue-700: #0369a1;
-      --color-green-100: #dcfce7;
-      --color-green-700: #15803d;
-      --color-yellow-100: #fef9c3;
-      --color-yellow-700: #a16207;
-      --color-silver-100: #e5e7eb;
-      --color-silver-700: #374151;
-      --color-indigo-100: #e0e7ff;
-      --color-indigo-700: #4338ca;
-
-      --color-red-100: #fee2e2;
-      --color-red-700: #ba3131;
-      --color-red-800: #991b1b;
-
-      --backdrop-color: rgba(255, 255, 255, 0.1);
-
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
-
-      --image-grayscale: 0;
-      --image-opacity: 100%;
     }
 
     &.dark-mode {
@@ -63,16 +33,9 @@ body {
       --color-grey-700: #e5e7eb;
       --color-grey-800: #f3f4f6;
       --color-grey-900: #f9fafb;
-
-      --backdrop-color: rgba(0, 0, 0, 0.3);
-
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-      --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
-
-      --image-grayscale: 10%;
-      --image-opacity: 90%;
     }
+
+    --purple: #a729f5;
 
     /* Indigo */
     --color-brand-50: #eef2ff;
@@ -86,17 +49,22 @@ body {
   }
 }
 
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: var(--color-grey-50);
+}
+
 @layer components {
   .option {
-    @apply w-full cursor-pointer items-center rounded-md bg-[#eee] p-[10px] shadow-md sm:p-[20px] md:w-[300px];
+    @apply bg-colorGrey2 w-full cursor-pointer items-center rounded-md p-[10px] shadow-md sm:p-[20px] md:w-[300px];
   }
 }
 
 ::-webkit-progress-bar {
-  background-color: #c7d2fe;
+  background-color: var(--color-grey-0);
   border-radius: 100px;
 }
 ::-webkit-progress-value {
-  background-color: #312e81;
+  background-color: var(--purple);
   border-radius: 100px;
 }

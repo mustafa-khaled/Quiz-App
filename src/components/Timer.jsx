@@ -13,7 +13,7 @@ function Timer({ dispatch, secondRemaining }) {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="bg-colorGrey2  rounded-3xl p-[10px]">
       {min < 10 ? `0${min}` : min}:{sec < 10 ? `0${sec}` : sec}
     </div>
   );

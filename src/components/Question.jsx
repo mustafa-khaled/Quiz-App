@@ -12,12 +12,9 @@ function Question({
   secondRemaining,
 }) {
   return (
-    <div className="container mx-auto  px-[10px] md:w-[80%]">
-      <div className="flex min-h-[45vh] w-full flex-col items-center justify-around gap-[20px] p-[20px] md:flex-row">
-        <div
-          className="flex h-[40vh] w-full flex-col items-start justify-between  md:w-[50%]
-         md:self-start"
-        >
+    <div className="container mx-auto px-[10px] md:w-[80%]">
+      <div className="flex min-h-[45vh] w-full flex-col items-center justify-around gap-[20px] p-[20px] md:flex-row md:justify-between">
+        <div className="flex h-[40vh] w-full flex-col items-start justify-center gap-[20px] md:w-[50%] md:justify-between">
           <p className="text-left text-2xl">{question.question}</p>
           <div className="flex w-full items-center justify-between">
             <Progress

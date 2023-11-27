@@ -67,10 +67,14 @@ function App() {
   } = state;
 
   const questionsNum = questions[topicNumber]?.questions?.length;
+  const topicIcon = questions[topicNumber]?.icon;
+  const topicTitle = questions[topicNumber]?.title;
+
+  console.log();
 
   return (
-    <div>
-      <Header />
+    <div className="text-textColor">
+      <Header topicIcon={topicIcon} topicTitle={topicTitle} />
 
       <div className="flex min-h-[calc(100vh-70px)] items-center justify-center">
         {status === "pending" && (
@@ -91,6 +95,8 @@ function App() {
         {status === "finished" && (
           <FinishScreen
             questionsNum={questionsNum}
+            topicIcon={topicIcon}
+            topicTitle={topicTitle}
             points={points}
             dispatch={dispatch}
           />
