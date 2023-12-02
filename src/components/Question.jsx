@@ -1,21 +1,26 @@
+import { useQuestions } from "../context/QuestionsProvider";
 import Button from "./Button";
 import Option from "./Option";
 import Progress from "./Progress";
 import Timer from "./Timer";
 
-function Question({
-  question,
-  dispatch,
-  answer,
-  index,
-  questionsNum,
-  secondRemaining,
-}) {
+function Question() {
+  const {
+    dispatch,
+    answer,
+    index,
+    questionsNum,
+    secondRemaining,
+    currentQuestion,
+  } = useQuestions();
+
   return (
     <div className="container mx-auto px-[10px] md:w-[80%]">
       <div className="flex min-h-[45vh] w-full flex-col items-center justify-around gap-[20px] p-[20px] md:flex-row md:justify-between">
         <div className="flex h-[40vh] w-full flex-col items-start justify-center gap-[20px] md:w-[50%] md:justify-between">
-          <p className="text-left text-xl sm:text-2xl">{question.question}</p>
+          <p className="text-left text-xl sm:text-2xl">
+            {currentQuestion.question}
+          </p>
           <div className="flex w-full flex-wrap items-center justify-between gap-[10px]">
             <Progress
               index={index}
@@ -27,14 +32,14 @@ function Question({
         </div>
 
         <div className="flex w-full flex-col  items-center gap-[10px] text-sm sm:gap-[20px] sm:text-base md:w-[50%]">
-          {question?.options?.map((q, i) => {
+          {currentQuestion?.options?.map((q, i) => {
             return (
               <Option
                 key={i}
-                option={question?.options[i]}
+                option={currentQuestion?.options[i]}
                 dispatch={dispatch}
                 answer={answer}
-                question={question}
+                question={currentQuestion}
               />
             );
           })}

@@ -1,12 +1,10 @@
+import { useQuestions } from "../context/QuestionsProvider";
 import Button from "./Button";
 
-function FinishScreen({
-  points,
-  questionsNum,
-  dispatch,
-  topicTitle,
-  topicIcon,
-}) {
+function FinishScreen() {
+  const { points, questionsNum, dispatch, topicTitle, topicIcon } =
+    useQuestions();
+
   return (
     <div className="container mx-auto  px-[10px] md:w-[80%]">
       <div className="ga-[20px] flex min-h-[80vh] w-full flex-col items-center justify-around md:flex-row md:justify-between">

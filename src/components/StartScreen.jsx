@@ -1,4 +1,8 @@
-function StartScreen({ questions, dispatch }) {
+import { useQuestions } from "../context/QuestionsProvider";
+
+function StartScreen() {
+  const { questions, dispatch } = useQuestions();
+
   return (
     <div className="container mx-auto  px-[10px] md:w-[80%]">
       <div className="flex min-h-[80vh] w-full flex-col items-center justify-around gap-[20px] md:flex-row md:justify-between">

@@ -1,6 +1,9 @@
+import { useQuestions } from "../context/QuestionsProvider";
 import ToggleDarkModeBtn from "./ToggleDarkModeBtn";
 
-function Header({ topicIcon, topicTitle }) {
+function Header() {
+  const { topicIcon, topicTitle } = useQuestions();
+
   return (
     <header className="flex h-[70px] items-center justify-center">
       <div className="container mx-auto flex justify-between px-[10px]">
